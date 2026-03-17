@@ -609,7 +609,8 @@ body {
       </div>
     </div>
 
-    <div id="scheduleForm" class="schedule-form">
+    <form id="scheduleForm" class="schedule-form" action="https://formspree.io/f/myknbvdo" method="POST">
+      <input type="hidden" name="_subject" value="New Intro Call Request">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Full Name *</label>
@@ -660,9 +661,9 @@ body {
         </div>
       </div>
       <div class="form-submit">
-        <button type="button" id="submitBtn" onclick="submitSchedule()">Schedule My Call &rarr;</button>
+        <button type="submit" id="submitBtn">Schedule My Call &rarr;</button>
       </div>
-    </div>
+    </form>
 
     <div id="formSuccess" class="form-success">
       <h3>Call Request Received!</h3>
@@ -739,53 +740,23 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight') navigateLightbox(1);
 });
 
-/* ── Schedule Call Form Submission ── */
-// SETUP: Replace YOUR_FORM_ID below with your Formspree form ID.
-// 1. Go to https://formspree.io and create a free account
-// 2. Create a new form → copy the form ID (e.g., "xwkgjqla")
-// 3. Replace YOUR_FORM_ID below with that ID
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
-function submitSchedule() {
-  const name = document.getElementById('name').value.trim();
-  const company = document.getElementById('company').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const interest = document.getElementById('interest').value;
-  const preferredTime = document.getElementById('preferred-time').value;
-  const details = document.getElementById('details').value.trim();
-
-  if (!name || !company || !email) {
-    alert('Please fill in all required fields (Name, Company, and Email).');
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
+/* ── Schedule Call Form Submission (AJAX via Formspree) ── */
+document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var btn = document.getElementById('submitBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
   btn.style.opacity = '0.7';
 
-  const formData = { name, company, email, phone, interest, preferred_time: preferredTime, details, _subject: 'Intro Call Request from ' + company };
-
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    const body = 'Name: ' + name + '%0D%0ACompany: ' + company + '%0D%0AEmail: ' + email + '%0D%0APhone: ' + phone + '%0D%0AInterest: ' + interest + '%0D%0APreferred Time: ' + preferredTime + '%0D%0A%0D%0AProject Details:%0D%0A' + encodeURIComponent(details);
-    window.location.href = 'mailto:quotes@zepherinc.com?subject=Intro%20Call%20Request%20-%20' + encodeURIComponent(company) + '&body=' + body;
-    setTimeout(function() {
-      btn.textContent = 'Schedule My Call →';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }, 2000);
-    return;
-  }
-
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+  fetch(form.action, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(formData)
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
   })
   .then(function(response) {
     if (response.ok) {
-      document.getElementById('scheduleForm').style.display = 'none';
+      form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } else {
       throw new Error('Form submission failed');
@@ -793,11 +764,11 @@ function submitSchedule() {
   })
   .catch(function() {
     alert('There was an issue submitting your request. Please email us directly at quotes@zepherinc.com or call 509.637.2520.');
-    btn.textContent = 'Schedule My Call →';
+    btn.textContent = 'Schedule My Call \u2192';
     btn.disabled = false;
     btn.style.opacity = '1';
   });
-}
+});
 </script>
 
 </body>
