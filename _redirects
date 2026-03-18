@@ -1,0 +1,9 @@
+# Netlify redirects — catch old WordPress URLs
+/wp-admin       /  301
+/wp-login.php   /  301
+/wp-content/*   /  301
+/feed           /  301
+/feed/          /  301
+
+# SPA fallback — serve index.html for any unmatched route
+/*  /index.html  200

@@ -11,7 +11,7 @@ Migrate from the current WordPress site hosted on GoDaddy to the new static HTML
 
 ## Pre-Migration Checklist
 
-- [ ] Verify the current live site's important URLs (use Google Search Console or `site:yourdomain.com` in Google)
+- [ ] Verify the current live site's important URLs (use Google Search Console or `site:zepherinc.com` in Google)
 - [ ] Take screenshots of the current site for reference
 - [ ] Confirm your GoDaddy account login and DNS management access
 - [ ] Ensure the Formspree contact form is working (test at the current dev URL)
@@ -43,7 +43,7 @@ Migrate from the current WordPress site hosted on GoDaddy to the new static HTML
    ```
    User-agent: *
    Allow: /
-   Sitemap: https://yourdomain.com/sitemap.xml
+   Sitemap: https://zepherinc.com/sitemap.xml
    ```
 
 4. **Add a basic `sitemap.xml`** for search engines:
@@ -51,7 +51,7 @@ Migrate from the current WordPress site hosted on GoDaddy to the new static HTML
    <?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-       <loc>https://yourdomain.com/</loc>
+       <loc>https://zepherinc.com/</loc>
        <lastmod>2026-03-18</lastmod>
        <priority>1.0</priority>
      </url>
@@ -77,7 +77,7 @@ Migrate from the current WordPress site hosted on GoDaddy to the new static HTML
 
 ### Phase 3: Connect Your Domain (15 min)
 
-1. **In Netlify:** Go to Site settings → Domain management → Add custom domain → enter your domain (e.g., `zepher.com`)
+1. **In Netlify:** Go to Site settings → Domain management → Add custom domain → enter `zepherinc.com`
 2. **In GoDaddy DNS:** Update your DNS records:
 
    | Type  | Name | Value                        | TTL    |
@@ -96,8 +96,8 @@ Migrate from the current WordPress site hosted on GoDaddy to the new static HTML
 
 1. **DNS propagation** — changes typically take 15 min to 48 hours. Use [dnschecker.org](https://dnschecker.org) to monitor
 2. **Test the live site** once DNS propagates:
-   - [ ] `https://yourdomain.com` loads the new site
-   - [ ] `https://www.yourdomain.com` loads the new site
+   - [ ] `https://zepherinc.com` loads the new site
+   - [ ] `https://www.zepherinc.com` loads the new site
    - [ ] HTTPS padlock shows (certificate is valid)
    - [ ] Contact form works on the live domain
    - [ ] Old WordPress URLs redirect to homepage (not 404)
