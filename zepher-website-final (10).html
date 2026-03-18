@@ -281,7 +281,7 @@ body {
     <li><a href="#equipment">Equipment</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#markets">Markets</a></li>
-    <li><a href="#contact" class="nav-cta">Schedule a Call</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
   <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -296,7 +296,7 @@ body {
     <h1>Precision Machining.<br><em>The Standard</em><br>Aerospace Demands.</h1>
     <p class="hero-sub">Complex parts, tight tolerances, complete documentation, and exceptional communication &mdash; manufacturing you can trust.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Schedule a Call &rarr;</a>
+      <a href="#contact" class="btn-primary">Contact Us &rarr;</a>
       <a href="#capabilities" class="btn-secondary">View Capabilities</a>
     </div>
   </div>
@@ -582,7 +582,7 @@ body {
 <section class="cta-section" id="contact">
   <div class="cta-inner">
     <div class="section-label" style="justify-content:center;">Get Started</div>
-    <h2>Schedule an Introductory Call</h2>
+    <h2>Contact Us</h2>
     <p>Let&rsquo;s discuss your project, walk you through our capabilities, and show you examples of our work. No obligation &mdash; just a conversation to see if Zepher is the right fit.</p>
 
     <div class="call-benefits fade-in">
@@ -662,13 +662,13 @@ body {
         </div>
       </div>
       <div class="form-submit">
-        <button type="submit" id="submitBtn">Schedule My Call &rarr;</button>
+        <button type="submit" id="submitBtn">Contact Us &rarr;</button>
       </div>
     </form>
 
     <div id="formSuccess" class="form-success">
-      <h3>Call Request Received!</h3>
-      <p>Thank you! A member of our team will reach out within one business day to schedule your introductory call.<br>We look forward to learning about your project.</p>
+      <h3>Request Received!</h3>
+      <p>Thank you! A member of our team will reach out within one business day.<br>We look forward to learning about your project.</p>
     </div>
 
     <div class="cta-contact">
@@ -765,7 +765,7 @@ document.getElementById('scheduleForm').addEventListener('submit', function(e) {
   })
   .catch(function() {
     alert('There was an issue submitting your request. Please call us directly at 509.637.2520.');
-    btn.textContent = 'Schedule My Call \u2192';
+    btn.textContent = 'Contact Us \u2192';
     btn.disabled = false;
     btn.style.opacity = '1';
   });
