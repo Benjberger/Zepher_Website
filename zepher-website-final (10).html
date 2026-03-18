@@ -147,15 +147,27 @@ body {
 .cert-text { font-size: 14px; font-weight: 600; }
 .cert-text small { display: block; font-size: 11px; font-weight: 400; color: var(--middle-blue); margin-top: 2px; }
 
+/* ── Schedule Call CTA Section ── */
 .cta-section { background: var(--steel-blue-deeper); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
 .cta-section::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(242,128,50,0.08), transparent 60%); }
-.cta-inner { max-width: 800px; margin: 0 auto; padding: 0 48px; position: relative; }
+.cta-inner { max-width: 900px; margin: 0 auto; padding: 0 48px; position: relative; }
 .cta-inner h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--white); letter-spacing: -1px; margin-bottom: 20px; }
-.cta-inner p { font-size: 17px; color: var(--middle-blue); line-height: 1.7; margin-bottom: 40px; }
+.cta-inner > p { font-size: 17px; color: var(--middle-blue); line-height: 1.7; margin-bottom: 48px; }
 .cta-contact { margin-top: 32px; }
 .cta-contact a { color: var(--orange); text-decoration: none; font-size: 18px; font-weight: 600; letter-spacing: 1px; }
 .cta-contact a:hover { text-decoration: underline; }
-.quote-form { text-align: left; margin: 0 auto; }
+
+/* Call benefits cards */
+.call-benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 48px; text-align: left; }
+.call-benefit { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 28px 24px; transition: border-color 0.3s; }
+.call-benefit:hover { border-color: var(--orange); }
+.call-benefit-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(242,128,50,0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.call-benefit-icon svg { width: 20px; height: 20px; }
+.call-benefit h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.call-benefit p { font-size: 13.5px; color: var(--middle-blue); line-height: 1.6; }
+
+/* Schedule form */
+.schedule-form { text-align: left; margin: 0 auto; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .form-group { display: flex; flex-direction: column; }
 .form-group.full { grid-column: 1 / -1; }
@@ -171,7 +183,7 @@ body {
 }
 .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2382a1b5' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
 .form-group select option { background: var(--steel-blue-deeper); color: var(--white); }
-.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group textarea { resize: vertical; min-height: 100px; }
 .form-note { font-size: 13px; color: var(--middle-blue); margin-top: 8px; line-height: 1.5; }
 .form-note a { color: var(--orange); text-decoration: none; }
 .form-note a:hover { text-decoration: underline; }
@@ -181,6 +193,7 @@ body {
 .form-success { display: none; text-align: center; padding: 48px 24px; }
 .form-success h3 { font-size: 28px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
 .form-success p { font-size: 17px; color: var(--middle-blue); line-height: 1.7; }
+@media (max-width: 768px) { .call-benefits { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
 
 .footer { background: var(--steel-blue-deeper); border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 48px; }
@@ -232,7 +245,7 @@ body {
     <li><a href="#equipment">Equipment</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#markets">Markets</a></li>
-    <li><a href="#contact" class="nav-cta">Request Quote</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
   <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Toggle navigation">
     <span></span><span></span><span></span>
@@ -247,7 +260,7 @@ body {
     <h1>Precision Machining.<br><em>The Standard</em><br>Aerospace Demands.</h1>
     <p class="hero-sub">Complex parts, tight tolerances, complete documentation, and exceptional communication &mdash; manufacturing you can trust.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Request a Quote &rarr;</a>
+      <a href="#contact" class="btn-primary">Contact Us &rarr;</a>
       <a href="#capabilities" class="btn-secondary">View Capabilities</a>
     </div>
   </div>
@@ -439,13 +452,33 @@ body {
   </div>
 </div>
 
+<!-- ── Schedule a Call ── -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
     <div class="section-label" style="justify-content:center;">Get Started</div>
-    <h2>Request a Quote</h2>
-    <p>Tell us about your project. Most quotes returned within 1&ndash;2 business days. Expedited options available.</p>
+    <h2>Contact Us</h2>
+    <p>Let&rsquo;s discuss your project and walk you through our capabilities. No obligation &mdash; just a conversation to see if Zepher is the right fit.</p>
 
-    <div id="quoteForm" class="quote-form">
+    <div class="call-benefits fade-in">
+      <div class="call-benefit">
+        <div class="call-benefit-icon">
+          <svg fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>Discuss Your Project</h4>
+        <p>Share your requirements, timeline, and challenges. Our engineering team will help identify the best approach for your parts.</p>
+      </div>
+      <div class="call-benefit">
+        <div class="call-benefit-icon">
+          <svg fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h4>Learn About Zepher</h4>
+        <p>Discover our certifications, equipment, quality systems, and what sets our precision machining apart from the competition.</p>
+      </div>
+    </div>
+
+    <form id="scheduleForm" class="schedule-form" action="https://formspree.io/f/myknbvdo" method="POST">
+      <input type="hidden" name="_subject" value="New Intro Call Request">
+
       <div class="form-row">
         <div class="form-group">
           <label for="name">Full Name *</label>
@@ -468,46 +501,45 @@ body {
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="material">Primary Material</label>
-          <select id="material" name="material">
-            <option value="">Select material...</option>
-            <option value="Aluminum">Aluminum</option>
-            <option value="Titanium">Titanium</option>
-            <option value="Stainless Steel">Stainless Steel</option>
-            <option value="Inconel / Hard Metals">Inconel / Hard Metals</option>
-            <option value="Other">Other</option>
+          <label for="interest">Primary Interest</label>
+          <select id="interest" name="interest">
+            <option value="">What are you looking for?</option>
+            <option value="New Project Quote">New project quote</option>
+            <option value="Ongoing Production">Ongoing production partnership</option>
+            <option value="Prototyping">Prototyping &amp; development</option>
+            <option value="Second Source">Second source / backup supplier</option>
+            <option value="General Inquiry">General inquiry</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="quantity">Estimated Quantity</label>
-          <select id="quantity" name="quantity">
-            <option value="">Select quantity...</option>
-            <option value="Prototype (1-5)">Prototype (1&ndash;5)</option>
-            <option value="Low Volume (5-50)">Low Volume (5&ndash;50)</option>
-            <option value="Production (50-500)">Production (50&ndash;500)</option>
-            <option value="High Volume (500+)">High Volume (500+)</option>
+          <label for="preferred-time">Preferred Time</label>
+          <select id="preferred-time" name="preferred_time">
+            <option value="">Select a time preference...</option>
+            <option value="Morning (8-10 AM PT)">Morning (8&ndash;10 AM PT)</option>
+            <option value="Mid-Morning (10 AM-12 PM PT)">Mid-Morning (10 AM&ndash;12 PM PT)</option>
+            <option value="Afternoon (1-3 PM PT)">Afternoon (1&ndash;3 PM PT)</option>
+            <option value="Late Afternoon (3-5 PM PT)">Late Afternoon (3&ndash;5 PM PT)</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group full">
-          <label for="details">Project Details *</label>
-          <textarea id="details" name="details" placeholder="Describe your part or project &mdash; tolerances, special requirements, timeline, etc." required></textarea>
-          <p class="form-note">Please email drawings and specs directly to <a href="mailto:quotes@zepherinc.com">quotes@zepherinc.com</a> referencing your submission.</p>
+          <label for="details">Tell Us About Your Project</label>
+          <textarea id="details" name="details" placeholder="Brief overview of your project &mdash; materials, quantities, special requirements, or any questions you have."></textarea>
         </div>
       </div>
       <div class="form-submit">
-        <button type="button" id="submitBtn" onclick="submitQuote()">Submit Quote Request &rarr;</button>
+        <button type="submit" id="submitBtn">Contact Us &rarr;</button>
       </div>
-    </div>
+    </form>
 
     <div id="formSuccess" class="form-success">
-      <h3>Quote Request Received</h3>
-      <p>Thank you! Our team will review your request and respond within 1&ndash;2 business days.<br>For immediate assistance, call us directly.</p>
+      <h3>Request Received!</h3>
+      <p>Thank you! A member of our team will reach out within one business day.<br>We look forward to learning about your project.</p>
     </div>
 
     <div class="cta-contact">
-      <a href="tel:5096372520">509.637.2520</a> &nbsp;&bull;&nbsp; <a href="mailto:quotes@zepherinc.com">quotes@zepherinc.com</a>
+      <a href="tel:5096372520">509.637.2520</a>
     </div>
   </div>
 </section>
@@ -534,66 +566,35 @@ window.addEventListener('scroll', () => {
   nav.style.boxShadow = window.scrollY > 80 ? '0 4px 24px rgba(0,0,0,0.15)' : 'none';
 });
 
-/* ── Quote Form Submission ── */
-// SETUP: Replace YOUR_FORM_ID below with your Formspree form ID.
-// 1. Go to https://formspree.io and create a free account
-// 2. Create a new form → copy the form ID (e.g., "xwkgjqla")
-// 3. Replace YOUR_FORM_ID below with that ID
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
-function submitQuote() {
-  const name = document.getElementById('name').value.trim();
-  const company = document.getElementById('company').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const material = document.getElementById('material').value;
-  const quantity = document.getElementById('quantity').value;
-  const details = document.getElementById('details').value.trim();
-
-  if (!name || !company || !email || !details) {
-    alert('Please fill in all required fields (Name, Company, Email, and Project Details).');
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
+/* ── Contact Form Submission (AJAX via Formspree) ── */
+document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var btn = document.getElementById('submitBtn');
   btn.textContent = 'Sending...';
   btn.disabled = true;
   btn.style.opacity = '0.7';
 
-  const formData = { name, company, email, phone, material, quantity, details, _subject: 'New Quote Request from ' + company };
-
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    // Fallback: construct mailto link if Formspree not configured
-    const body = 'Name: ' + name + '%0D%0ACompany: ' + company + '%0D%0AEmail: ' + email + '%0D%0APhone: ' + phone + '%0D%0AMaterial: ' + material + '%0D%0AQuantity: ' + quantity + '%0D%0A%0D%0AProject Details:%0D%0A' + encodeURIComponent(details);
-    window.location.href = 'mailto:quotes@zepherinc.com?subject=Quote%20Request%20-%20' + encodeURIComponent(company) + '&body=' + body;
-    setTimeout(function() {
-      btn.textContent = 'Submit Quote Request →';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }, 2000);
-    return;
-  }
-
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+  fetch(form.action, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(formData)
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
   })
   .then(function(response) {
     if (response.ok) {
-      document.getElementById('quoteForm').style.display = 'none';
+      form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } else {
       throw new Error('Form submission failed');
     }
   })
   .catch(function() {
-    alert('There was an issue submitting your request. Please email us directly at quotes@zepherinc.com or call 509.637.2520.');
-    btn.textContent = 'Submit Quote Request →';
+    alert('There was an issue submitting your request. Please call us directly at 509.637.2520.');
+    btn.textContent = 'Contact Us \u2192';
     btn.disabled = false;
     btn.style.opacity = '1';
   });
-}
+});
 </script>
 
 </body>
