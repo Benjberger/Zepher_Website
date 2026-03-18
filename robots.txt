@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zepherinc.com/sitemap.xml
