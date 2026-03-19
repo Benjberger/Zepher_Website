@@ -5,5 +5,9 @@
 /feed           /  301
 /feed/          /  301
 
+# Resources page
+/resources      /resources.html  200
+/resources/     /resources.html  200
+
 # SPA fallback — serve index.html for any unmatched route
 /*  /index.html  200
